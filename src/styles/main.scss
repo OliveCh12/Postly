@@ -1,0 +1,30 @@
+@import "./variables.scss";
+@import url('https://fonts.googleapis.com/css?family=Varela+Round&display=swap');
+
+.App {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  font-family: "San Francisco Text";
+  // font-family: 'Varela Round', sans-serif;
+
+}
+.wrapper {
+  width: 100%;
+  flex-grow: 1;
+}
+
+strong {
+    color: $primary;
+}
+// Import Bootstrap and its default variables
+@import "~bootstrap/scss/bootstrap.scss";
+@import "./components/buttons.scss";
+@import "./components/header.scss";
+@import "./components/footer.scss";
+@import "./components/resume.scss";
+@import "./components/forms.scss";
+@import "./components/code.scss";
+
