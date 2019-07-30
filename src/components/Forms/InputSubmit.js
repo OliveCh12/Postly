@@ -18,7 +18,7 @@ const InputSubmit = ({
         type={type}
         name={name}
         disabled={disabled}
-        class="form-control"
+        className="form-control"
         placeholder={placeholder}
         readOnly={readOnly}
         onChange={callback}
@@ -31,7 +31,7 @@ const InputSubmit = ({
       {dialog === "" ? (
         ""
       ) : (
-        <small class="form-text text-primary">{dialog}</small>
+        <small className="form-text text-primary">{dialog}</small>
       )}
     </div>
   );
