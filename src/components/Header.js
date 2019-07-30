@@ -1,18 +1,22 @@
-import React from "react";
+import React, { useContext } from "react";
+import { NavLink } from "react-router-dom";
+
+import { UserContext } from "./Builder/UserContext";
 
 import Modal from "./Modal/Modal";
 import useModal from "./Modal/useModal";
 
 const Header = () => {
-  const { isShowing, toggle } = useModal()
+  const [user, setUser] = useContext(UserContext);
+  const { isShowing, toggle } = useModal();
 
   return (
     <header>
       <nav className="navbar navbar-expand-lg navbar-light">
         <div className="container">
-          <a className="navbar-brand" href="/">
+          <NavLink to="/" className="navbar-brand">
             Postly©
-          </a>
+          </NavLink>
           <button
             className="navbar-toggler"
             type="button"
@@ -26,29 +30,45 @@ const Header = () => {
           </button>
           <div className="collapse navbar-collapse" id="navbarNav">
             <ul className="navbar-nav ml-auto">
-              <li className="nav-item active">
-                <a className="nav-link" href="/">
-                  Write<span className="sr-only">(current)</span>
-                </a>
+              <li className="nav-item">
+                <NavLink
+                  to="/builder"
+                  className="nav-link"
+                  activeClassName="active"
+                >
+                  Builder
+                </NavLink>
               </li>
               <li className="nav-item">
-                <a className="nav-link" href="/">
-                  Create
-                </a>
+                <NavLink
+                  to="/princing"
+                  className="nav-link"
+                  activeClassName="active"
+                >
+                  Pricing
+                </NavLink>
               </li>
               <li className="nav-item">
-                <a className="nav-link" href="/">
+                <NavLink
+                  to="/themes"
+                  className="nav-link"
+                  activeClassName="active"
+                >
                   Themes
-                </a>
+                </NavLink>
               </li>
             </ul>
-            <button
-              type="button"
-              className="nav-link btn btn-primary my-2 my-sm-0"
-              onClick={toggle}
-            >
-              Download
-            </button>
+            {user.firstname ? (
+              <button
+                type="button"
+                className="nav-link btn btn-primary my-2 my-sm-0"
+                onClick={toggle}
+              >
+                {user.firstname}
+              </button>
+            ) : (
+              ""
+            )}
           </div>
         </div>
         <Modal isShowing={isShowing} hide={toggle} />
